@@ -33,9 +33,9 @@ Verified November 6, 2026: CLI **349** extensions; preview **450** source-file e
 
 **Ask your Agent to install it:**
 
-> Install filens for me. Find skills/filens/SKILL.md at https://github.com/orca-zhang/filens and follow it to set up the CLI and skill.
+> Install filens for me. Read https://filens.cc/skills/filens/SKILL.md and follow it to set up the CLI and skill. Offline packages: https://filens.cc/downloads/.
 
-[Skill guide](skills/filens/SKILL.md) · For manual installation, download your platform’s offline bundle from the [latest Release](https://github.com/orca-zhang/filens/releases/latest) and extract the entire archive. Full includes offline preview assets, OCR and models. Lite keeps OCR and preview assets optional. Both run without Node.js or npm.
+[Skill guide](https://filens.cc/skills/filens/SKILL.md) · For manual installation, download your platform’s offline bundle from the [official downloads](https://filens.cc/downloads/) and extract the entire archive. Full includes offline preview assets, OCR and models. Lite keeps OCR and preview assets optional. Both run without Node.js or npm.
 
 ```sh
 filens 'read "report.pdf" as json'
@@ -51,7 +51,7 @@ filens capacity --json
 
 ### Offline browser previews
 
-**CLI 0.5.7:** `filens preview report.pdf` creates a self-contained HTML with the source file, preview engine and licenses, opens it locally and exits. No server or file upload is needed. The v0.6.7 Full bundles include preview 0.3.7. With Lite, download and extract [the all-in-one runtime ZIP](https://github.com/orca-zhang/filens/releases/download/v0.6.7/filens-preview-0.3.7-all-in-one.zip), then pass `--assets /path/to/filens-preview-0.3.7-all-in-one` or set `FILENS_PREVIEW_DIR`. Copying its contents into `preview/` beside the executable also enables automatic discovery. npm CLI 0.5.7 pins preview 0.3.7; DSH 0.1.10 embeds preview 0.3.7; npm installations can prepare assets with `filens setup-preview`. The frontend package includes both builds and is measured separately: [package sizes](docs/preview-package-sizes.json).
+**CLI 0.5.7:** `filens preview report.pdf` creates a self-contained HTML with the source file, preview engine and licenses, opens it locally and exits. No server or file upload is needed. The v0.6.7 Full bundles include preview 0.3.7. With Lite, download and extract [the all-in-one runtime ZIP](https://filens.cc/downloads/v0.6.7/filens-preview-0.3.7-all-in-one.zip), then pass `--assets /path/to/filens-preview-0.3.7-all-in-one` or set `FILENS_PREVIEW_DIR`. Copying its contents into `preview/` beside the executable also enables automatic discovery. npm CLI 0.5.7 pins preview 0.3.7; DSH 0.1.10 embeds preview 0.3.7; npm installations can prepare assets with `filens setup-preview`. The frontend package includes both builds and is measured separately: [package sizes](docs/preview-package-sizes.json).
 
 ```sh
 # Export a portable offline preview; existing files are never overwritten
@@ -75,7 +75,7 @@ The HTML checks browser capabilities and blocks external resource requests. It c
   <p><strong>CLI executable 2.20 MiB · Lite 7.17 MiB · Full 31.91 MiB · <a href="LICENSE">MIT</a></strong><br /><sub>v0.6.7 offline downloads · macOS arm64 · CLI 0.5.7; Full includes preview 0.3.7 and OCR models; Lite adds preview assets separately; <a href="docs/preview-release-sizes.json">all platform sizes</a></sub></p>
 <!-- agent-cli-size:en:end -->
 
-- [Installation, protocol and packaging](docs/agent-cli.md) · [Agent skill](skills/filens/SKILL.md)
+- [Installation, protocol and packaging](docs/agent-cli.md) · [Agent skill](https://filens.cc/skills/filens/SKILL.md)
 - [Output formats and layouts](docs/agent-cli-formats-and-layout.zh-CN.md) · [68 observed examples and limits](docs/agent-cli-examples.zh-CN.md)
 - [Search](docs/agent-cli-search.zh-CN.md), [nested archives](docs/agent-cli-search-archives.zh-CN.md) and [model-free key excerpts](docs/agent-cli-pruning.zh-CN.md)
 - [Duplicates and similar images](docs/agent-cli-similarity.md) · [Windows setup and validation status](docs/agent-cli-windows.zh-CN.md)
@@ -123,7 +123,7 @@ Version 0.1.10 includes **File workspace** in the same `dsh-filens` installation
 
 ### Browser integration: single file or split modules
 
-**Preview 0.3.7:** split ZIP **5.62 MiB**, all-in-one ZIP **10.61 MiB**. Download from [v0.6.7](https://github.com/orca-zhang/filens/releases/tag/v0.6.7). Deploy the complete split directory, or choose the all-in-one JS build. Keep the archive sidecars to enable RAR / 7z.
+**Preview 0.3.7:** split ZIP **5.62 MiB**, all-in-one ZIP **10.61 MiB**. Download from [the official site](https://filens.cc/downloads/). Deploy the complete split directory, or choose the all-in-one JS build. Keep the archive sidecars to enable RAR / 7z.
 
 npm: [filens-preview@0.3.7](https://www.npmjs.com/package/filens-preview/v/0.3.7), **16.22 MiB** download / **31.88 MiB** installed, including both builds. [Public registry checks](docs/preview-npm-registry-validation.json).
 
@@ -281,7 +281,7 @@ npm run build:wasm
 npm run dev --workspace @filens/demo
 ```
 
-Open [the local demo](http://localhost:5173/modules/filens/?lang=en) (requires local deployment; otherwise, open [the Vercel online demo](https://filens-six.vercel.app/?lang=en)), then choose a sample or drop in a file. For hosting, see the [Vercel guide](docs/deploy-vercel.md).
+Open [the online demo](https://filens.cc/?lang=en) or [the local demo](http://localhost:5173/modules/filens/?lang=en) (requires local deployment), then choose a sample or drop in a file. For hosting, see the [Vercel guide](docs/deploy-vercel.md).
 
 ## Install on ZimaOS
 

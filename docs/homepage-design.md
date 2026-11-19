@@ -8,7 +8,7 @@ The preview toolbar starts hidden. Use the toolbar button in the preview header 
 
 The homepage, examples, and local-file preview do not require NAS authentication. Bundled examples use the configured frontend base path; external media and panorama examples use the public `/external-samples/` proxy routes. No example reads NAS storage or redirects to a host login page. Vite development/preview, `scripts/serve-static.py`, and the Vercel deployment provide these proxies; other static hosts need equivalent routes for external examples.
 
-The “通过链接打开” button opens a keyboard-accessible URL dialog, with focus returned to its trigger after opening a file or dismissing the dialog. Its input defaults to the project's public presentation at `https://filens-six.vercel.app/samples/filens-field-notes.pptx`.
+The “通过链接打开” button opens a keyboard-accessible URL dialog, with focus returned to its trigger after opening a file or dismissing the dialog. Its input defaults to the project's public presentation at `https://filens.cc/samples/filens-field-notes.pptx`.
 
 Each recording regenerates `apps/demo/src/home-media.json` with a content hash. The homepage uses that version for the video, poster, and captions so replacing the recording also refreshes cached media.
 

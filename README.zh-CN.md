@@ -33,9 +33,9 @@
 
 **把这句话发给你的 Agent：**
 
-> 帮我安装 filens，去 https://github.com/orca-zhang/filens 找 skills/filens/SKILL.md，按里面的说明配置 CLI 和 Skill。
+> 帮我安装 filens，读取 https://filens.cc/skills/filens/SKILL.md，按里面的说明配置 CLI 和 Skill。离线安装包：https://filens.cc/downloads/。
 
-[Skill 使用说明](skills/filens/SKILL.md) · 手动安装可从 [v0.6.7 Release](https://github.com/orca-zhang/filens/releases/tag/v0.6.7) 下载对应平台的离线包并完整解压。Full 自带离线预览、OCR 与模型；Lite 的 OCR 与预览资源按需补充。两者运行均无需 Node.js 或 npm。
+[Skill 使用说明](https://filens.cc/skills/filens/SKILL.md) · 手动安装可从[官网下载页](https://filens.cc/downloads/) 下载对应平台的离线包并完整解压。Full 自带离线预览、OCR 与模型；Lite 的 OCR 与预览资源按需补充。两者运行均无需 Node.js 或 npm。
 
 ```sh
 filens '读取 "report.pdf"，以 JSON 输出'
@@ -51,7 +51,7 @@ filens capacity --json
 
 ### 离线浏览器预览
 
-**CLI 0.5.7：**`filens preview report.pdf` 生成包含原文件、预览引擎和许可说明的独立 HTML，本地打开后即退出，无需服务器，无需上传文件。v0.6.7 Full 包内置预览 0.3.7，解压后即可使用。Lite 需另行下载并解压 [all-in-one 运行时 ZIP](https://github.com/orca-zhang/filens/releases/download/v0.6.7/filens-preview-0.3.7-all-in-one.zip)，通过 `--assets /path/to/filens-preview-0.3.7-all-in-one` 或 `FILENS_PREVIEW_DIR` 指定；将运行时内容放入可执行文件旁的 `preview/` 目录也可自动识别。npm CLI 0.5.7 固定使用预览 0.3.7；DSH 0.1.10 内置预览 0.3.7；npm 安装可运行 `filens setup-preview` 提前准备资源。预览包包含单文件和分包构建，与 CLI 分开计量：[包体积实测](docs/preview-package-sizes.json)。
+**CLI 0.5.7：**`filens preview report.pdf` 生成包含原文件、预览引擎和许可说明的独立 HTML，本地打开后即退出，无需服务器，无需上传文件。v0.6.7 Full 包内置预览 0.3.7，解压后即可使用。Lite 需另行下载并解压 [all-in-one 运行时 ZIP](https://filens.cc/downloads/v0.6.7/filens-preview-0.3.7-all-in-one.zip)，通过 `--assets /path/to/filens-preview-0.3.7-all-in-one` 或 `FILENS_PREVIEW_DIR` 指定；将运行时内容放入可执行文件旁的 `preview/` 目录也可自动识别。npm CLI 0.5.7 固定使用预览 0.3.7；DSH 0.1.10 内置预览 0.3.7；npm 安装可运行 `filens setup-preview` 提前准备资源。预览包包含单文件和分包构建，与 CLI 分开计量：[包体积实测](docs/preview-package-sizes.json)。
 
 ```sh
 # 导出可携带的离线预览，不覆盖已有文件
@@ -75,7 +75,7 @@ filens preview report.pdf --mode serve
   <p><strong>CLI 可执行文件 2.20 MiB · Lite 7.17 MiB · Full 31.91 MiB · <a href="LICENSE">MIT</a></strong><br /><sub>v0.6.7 离线下载 · macOS arm64 · CLI 0.5.7；Full 含预览 0.3.7 和 OCR 模型，Lite 另配预览资源；<a href="docs/preview-release-sizes.json">各平台完整数据</a></sub></p>
 <!-- agent-cli-size:zh:end -->
 
-- [安装、协议与打包](docs/agent-cli.md) · [Agent skill](skills/filens/SKILL.md)
+- [安装、协议与打包](docs/agent-cli.md) · [Agent skill](https://filens.cc/skills/filens/SKILL.md)
 - [输出格式与布局信息](docs/agent-cli-formats-and-layout.zh-CN.md) · [68 条实测案例与自然语言边界](docs/agent-cli-examples.zh-CN.md)
 - [跨格式搜索](docs/agent-cli-search.zh-CN.md)、[嵌套压缩包](docs/agent-cli-search-archives.zh-CN.md)与[无模型关键原文摘录](docs/agent-cli-pruning.zh-CN.md)
 - [重复文件与相似图片](docs/agent-cli-similarity.md) · [Windows 安装与验证状态](docs/agent-cli-windows.zh-CN.md)
@@ -123,7 +123,7 @@ CLI 使用 Rust，转换复用前端核心。Full 内置 RapidOCR NCNN（最大�
 
 ### 浏览器集成：单文件与按需分包
 
-**预览 0.3.7：** 分包 ZIP **5.62 MiB**，单 JS 版 ZIP **10.61 MiB**。从 [v0.6.7 Release](https://github.com/orca-zhang/filens/releases/tag/v0.6.7) 下载浏览器预览 ZIP。分包版部署整个解压目录；单 JS 版同样保留压缩包引擎配套资源，按需启用 RAR / 7z。
+**预览 0.3.7：** 分包 ZIP **5.62 MiB**，单 JS 版 ZIP **10.61 MiB**。从[官网下载页](https://filens.cc/downloads/)下载浏览器预览 ZIP。分包版部署整个解压目录；单 JS 版同样保留压缩包引擎配套资源，按需启用 RAR / 7z。
 
 npm：[filens-preview@0.3.7](https://www.npmjs.com/package/filens-preview/v/0.3.7)，下载 **16.22 MiB** / 安装 **31.88 MiB**，包含两种构建。[公开注册表验证](docs/preview-npm-registry-validation.json)。
 
@@ -278,7 +278,7 @@ npm run build:wasm
 npm run dev --workspace @filens/demo
 ```
 
-打开[本地演示站](http://localhost:5173/modules/filens/?lang=zh)（需先本地部署，否则请打开 [Vercel 在线演示](https://filens-six.vercel.app/?lang=zh)），选择样例或拖入文件。部署见 [Vercel 指南](docs/deploy-vercel.md)。
+打开[在线演示](https://filens.cc/?lang=zh)或[本地演示站](http://localhost:5173/modules/filens/?lang=zh)（需先本地部署），选择样例或拖入文件。部署见 [Vercel 指南](docs/deploy-vercel.md)。
 
 ## 在 ZimaOS 上安装
 

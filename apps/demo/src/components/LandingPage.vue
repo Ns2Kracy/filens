@@ -16,9 +16,10 @@ const revealAnimations = new Set<Animation>();
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 const demoAsset = (file: string) => `${asset(`home/${file}`)}?v=${demoMedia.version}`;
 const repo = 'https://github.com/orca-zhang/filens';
+const skillUrl = 'https://filens.cc/skills/filens/SKILL.md';
 const skillInstallPrompt = computed(() => t(
-  `帮我安装 filens，去 ${repo} 找 skills/filens/SKILL.md，按里面的说明配置 CLI 和 Skill。`,
-  `Install filens for me. Find skills/filens/SKILL.md at ${repo} and follow it to set up the CLI and skill.`
+  `帮我安装 filens，读取 ${skillUrl}，按里面的说明配置 CLI 和 Skill。离线安装包：https://filens.cc/downloads/。`,
+  `Install filens for me. Read ${skillUrl} and follow it to set up the CLI and skill. Offline packages: https://filens.cc/downloads/.`
 ));
 const skillCopyState = ref<'idle' | 'copied' | 'error'>('idle');
 let skillCopyTimer: ReturnType<typeof setTimeout> | undefined;
@@ -345,6 +346,7 @@ async function playDemo(): Promise<void> {
         <a href="#more-formats">{{ t('常见格式', 'Formats') }}</a>
         <a href="#demo">{{ t('视频演示', 'Watch demo') }}</a>
         <a href="#skill">Skill</a>
+        <a href="https://filens.cc/downloads/">{{ t('下载', 'Downloads') }}</a>
       </nav>
       <div class="nav-actions">
         <a class="landing-agent-link" :href="`${asset('')}?view=agent`" @click.prevent="emit('agent')">Agent</a>

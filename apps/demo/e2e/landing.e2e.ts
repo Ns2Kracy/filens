@@ -203,6 +203,8 @@ test('opens the filens introduction through a shareable link with all 14 slides'
   await page.goto('./?view=preview&format=showcase');
   await expect(page.locator('.wb-preview-title strong')).toHaveText('filens-introduction.zh-CN.pptx');
   await expect(page.locator('.wb-preview-stage')).toContainText('把文件理解');
+  await expect(page.locator('.wb-preview-stage')).toContainText('github.com/orca-zhang/filens');
+  await expect(page.locator('.wb-preview-stage')).not.toContainText('IceWhaleTech/filens');
   await expect(page.locator('.wb-preview-stage')).not.toContainText('Master Title');
   await expect(page.locator('.pptxv-slide-shell')).toHaveCount(14);
   await expect(page.locator('.pptxv-toolbar')).toHaveCount(0);
@@ -215,6 +217,10 @@ test('opens the filens introduction through a shareable link with all 14 slides'
   await page.locator('.pptxv-shell').first().press('ArrowLeft');
   await page.getByRole('button', { name: '显示工具栏', exact: true }).click();
   await expect(page.locator('.pptxv-status').first()).toHaveText('1 / 14');
+  await page.goto('./?view=preview&format=showcase&lang=en');
+  await expect(page.locator('.wb-preview-title strong')).toHaveText('filens-introduction.en.pptx');
+  await expect(page.locator('.wb-preview-stage')).toContainText('github.com/orca-zhang/filens');
+  await expect(page.locator('.wb-preview-stage')).not.toContainText('IceWhaleTech/filens');
 });
 
 test('opens the public Keynote night-sky sample with three slides', async ({ page }) => {

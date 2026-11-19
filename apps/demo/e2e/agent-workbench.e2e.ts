@@ -16,6 +16,11 @@ test('opens the Agent console from the homepage and serves the distributable ski
   expect(response.ok()).toBe(true);
   expect(response.headers()['content-type']).toMatch(/text\/markdown/);
   expect(await response.text()).toBe(skill);
+  for (const name of ['reading', 'search', 'operations']) {
+    const reference = await page.request.get(`./skills/filens/references/${name}.md`);
+    expect(reference.ok()).toBe(true);
+    expect(await reference.text()).toBe(await readFile(`skills/filens/references/${name}.md`, 'utf8'));
+  }
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('link', { name: '下载 SKILL.md', exact: true }).click();
   const download = await downloadPromise;
@@ -33,7 +38,7 @@ test('copies installation commands, a matching Agent prompt and the original ski
   await page.getByRole('button', { name: '复制给 Agent 安装', exact: true }).click();
   const defaultPrompt = await page.evaluate(() => navigator.clipboard.readText());
   expect(defaultPrompt).toContain('帮我安装 filens');
-  expect(defaultPrompt).toContain('https://github.com/orca-zhang/filens');
+  expect(defaultPrompt).toContain('https://filens.cc/skills/filens/SKILL.md');
   expect(defaultPrompt).toContain('skills/filens/SKILL.md');
   expect(defaultPrompt).toContain('Full 版 CLI');
   await expect(page.locator('.agent-feedback')).toHaveText('安装提示已复制，粘贴给你的 Agent 即可。');
@@ -51,7 +56,7 @@ test('copies installation commands, a matching Agent prompt and the original ski
   expect(prompt).toContain('装到当前项目');
   expect(prompt).not.toContain('npx');
   expect(prompt).toContain('filens capacity --json');
-  expect(prompt).toContain('https://github.com/orca-zhang/filens');
+  expect(prompt).toContain('https://filens.cc/skills/filens/SKILL.md');
   expect(prompt).toContain('skills/filens/SKILL.md');
   await page.getByRole('button', { name: '复制跨文件搜索命令', exact: true }).click();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('filens search "./documents" --query "预算 风险" --json');
